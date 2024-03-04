@@ -30,14 +30,14 @@ public class PhoneBook {
         
     public void printSortedPhoneBook(){
         if (!contacts.isEmpty()) {
-            Map <String, ArrayList<Integer>> sorted = contacts.entrySet()
+            contacts = contacts.entrySet()
                                 .stream()
                                 .sorted(comparingInt(e -> -e.getValue().size()))
                                 .collect(Collectors.toMap(Map.Entry::getKey,
                                                             Map.Entry::getValue,
-                                                             (e1, e2) -> {throw new AssertionError();},
+                                                             (e1, e2) -> e1,
                                                              LinkedHashMap::new));
-            System.out.println(sorted);
+            System.out.println(contacts);
             
         }
         else {
